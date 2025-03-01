@@ -18,6 +18,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 /////////////////handles permisions
+    public boolean AllowRecording = false;
+
     private void requestAccessToRecording() {
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, 1);
     }
@@ -27,13 +29,12 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(id, permissions, grant);
 
         if (id == 1 && grant[0] == PackageManager.PERMISSION_GRANTED ) {
-            //startRecording();
+            AllowRecording = true;
         } else if (id == 1) {
             Toast.makeText(this,"This app needs to record audio", Toast.LENGTH_SHORT).show();
         }
     }
 ////////////////////////////////
-
 
 
     @Override
@@ -52,11 +53,15 @@ public class MainActivity extends AppCompatActivity {
         Button stopButton = findViewById(R.id.stopButton);
         // Zaczyna foregroundserice
         startButton.setOnClickListener(view -> {
-            Intent serviceIntent = new Intent(this, BackgroundRecording.class);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                startForegroundService(serviceIntent);
+            if (AllowRecording == true) {
+                Intent serviceIntent = new Intent(this, BackgroundRecording.class);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    startForegroundService(serviceIntent);
+                } else {
+                    startService(serviceIntent);
+                }
             } else {
-                startService(serviceIntent);
+                Toast.makeText(this,"This app wont work if you dont allow to record", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -72,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         //checks for permision
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
-            //recording allowed so start
+            AllowRecording = true;
         } else {
             requestAccessToRecording();
         }

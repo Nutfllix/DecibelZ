@@ -5,14 +5,24 @@ import android.app.NotificationManager;
 import android.app.Service;
 import android.app.NotificationChannel;
 import android.content.Intent;
+import android.media.AudioFormat;
+import android.media.AudioRecord;
+import android.media.MediaRecorder;
 import android.os.Build;
 import android.os.IBinder;
+import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
 public class BackgroundRecording extends Service {
     private static final int notificationId = 1;
     private static final String channelID = "Backgroundrecording";
+
+    //variables for audio
+    public double dBFS;
+    public double offset;
+    //
+
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -29,7 +39,27 @@ public class BackgroundRecording extends Service {
         startForeground(notificationId, notification);
 
         new Thread(()->{
-            
+            int BufferSize = AudioRecord.getMinBufferSize(44100, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
+            AudioRecord audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, 44100, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT, BufferSize);
+            short[] bufferStorage = new short[BufferSize];
+            audioRecord.startRecording();
+
+            while (true) {
+
+                audioRecord.read(bufferStorage, 0, BufferSize);
+
+                double sum = 0;
+                for (short sample : bufferStorage) {
+                    double normSample = sample / 32768.0;
+                    sum += normSample * normSample;
+                }
+                double rms = Math.sqrt(sum / bufferStorage.length);
+
+                dBFS = 20 * Math.log10(rms);
+                double dBSPL = dBFS + offset;
+
+                System.out.println(dBSPL);
+            }
         });
 
         return START_STICKY;
