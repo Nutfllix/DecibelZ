@@ -45,6 +45,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 ////////////////////////////////
+    public Boolean records;
+    SharedPreferences RecordBoolStorage;
+    @Override
+    protected void onStop() {
+        super.onStop();
+        SharedPreferences.Editor recordbooleditor = RecordBoolStorage.edit();
+        recordbooleditor.putBoolean("RecordVar", records);
+        recordbooleditor.apply();
+        System.out.println("saved recordstate");
+    }
+
+
+    public boolean getRecords() {
+        return RecordBoolStorage.getBoolean("RecordVar", false);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,22 +77,36 @@ public class MainActivity extends AppCompatActivity {
         Button stopButton = findViewById(R.id.stopButton);
         Intent serviceIntent = new Intent(this, BackgroundRecording.class);
         // Zaczyna foregroundserice
+        RecordBoolStorage = getSharedPreferences("RecordBoolStorage", MODE_PRIVATE);
+        records = getRecords();
+
+
+
+
+
+
         startButton.setOnClickListener(view -> {
-            if (AllowRecording == true) {
+            if (records==true) {
+                records = false;
+                System.out.println("StartsService");
+                if (AllowRecording == true) {
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    startForegroundService(serviceIntent);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        startForegroundService(serviceIntent);
+                    } else {
+                        startService(serviceIntent);
+                    }
                 } else {
-                    startService(serviceIntent);
+                    Toast.makeText(this,"This app wont work if you dont allow to record", Toast.LENGTH_SHORT).show();
                 }
-            } else {
-                Toast.makeText(this,"This app wont work if you dont allow to record", Toast.LENGTH_SHORT).show();
-            }
-        });
+            } else if (!records){
+                records = true;
+                System.out.println("stopping service");
+                stopService(serviceIntent);
 
-        //zatrzymuje
-       stopButton.setOnClickListener(view -> {
-            stopService(serviceIntent);
+
+            }
+
         });
         ///////////////////////////////
 

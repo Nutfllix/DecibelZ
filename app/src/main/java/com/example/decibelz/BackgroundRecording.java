@@ -21,11 +21,20 @@ public class BackgroundRecording extends Service {
     private static final int notificationId = 1;
     private static final String channelID = "Backgroundrecording";
 
+
+    AudioRecord audioRecord;
     //variables for audio
     public static double dBFS;
     //
 
-
+    public boolean threadVar = true;
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        audioRecord.stop();
+        threadVar = false;
+        System.out.println("destroy7ed service");
+    }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -43,11 +52,11 @@ public class BackgroundRecording extends Service {
 
         new Thread(() -> {
             int BufferSize = AudioRecord.getMinBufferSize(44100, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
-            AudioRecord audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, 44100, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT, BufferSize);
+            audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, 44100, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT, BufferSize);
             short[] bufferStorage = new short[BufferSize];
             audioRecord.startRecording();
 
-            while (true) {
+            while (threadVar) {
 
                 audioRecord.read(bufferStorage, 0, BufferSize);
 
@@ -61,7 +70,7 @@ public class BackgroundRecording extends Service {
                 dBFS = 20 * Math.log10(rms);
 
 
-                System.out.println(dBFS);
+                //System.out.println(dBFS);
                 LiveData.get().getData().postValue((int) dBFS);
             }
         }).start();
