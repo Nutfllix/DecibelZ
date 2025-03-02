@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
         ///////
         //moving to other pages
-        Button b = findViewById(R.id.settingsMove);
+        ImageButton b = findViewById(R.id.settingsMove);
         b.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, Settings_page.class);
             startActivity(intent);
