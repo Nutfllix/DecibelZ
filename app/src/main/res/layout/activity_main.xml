@@ -48,13 +48,9 @@
         android:id="@+id/settingsMove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="303dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginBottom="669dp"
-        android:text="Settings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="71dp"
+        android:text="Settings2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
