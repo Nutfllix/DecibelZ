@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -48,6 +49,11 @@ public class Settings_page extends AppCompatActivity {
         kalibruj.setOnClickListener(v->{
             offset = seekBar.getProgress();
             updateOffset();
+        });
+
+        TextView d = findViewById(R.id.testView2);
+        LiveData.get().getData().observe(this, dBFS -> {
+            d.setText(dBFS);
         });
     }
 }
