@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import static com.example.decibelz.BackgroundRecording.dBFS;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -81,11 +80,19 @@ public class MainActivity extends AppCompatActivity {
             requestAccessToRecording();
         }
         ////////////////////////////////
-
+        //gets data from livedata and posts it to textview
         TextView a = findViewById(R.id.testView);
 
         LiveData.get().getData().observe(this, newValue -> {
             a.setText(newValue);
+        });
+
+        ///////
+        //moving to other pages
+        Button b = findViewById(R.id.settingsMove);
+        b.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, Settings_page.class);
+            startActivity(intent);
         });
     }
 }
