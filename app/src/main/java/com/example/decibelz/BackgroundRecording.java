@@ -22,8 +22,8 @@ public class BackgroundRecording extends Service {
     private static final String channelID = "Backgroundrecording";
 
     //variables for audio
-    public double dBFS;
-    public double offset;
+    public static double dBFS;
+    public double offset = 110;
     //
 
 
