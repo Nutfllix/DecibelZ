@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         TextView a = findViewById(R.id.testView);
 
         LiveData.get().getData().observe(this, dBFS -> {
-            a.setText(dBFS);
+            a.setText(String.valueOf(dBFS));
         });
 
         ///////

@@ -62,7 +62,7 @@ public class BackgroundRecording extends Service {
 
 
                 System.out.println(dBFS);
-                LiveData.get().getData().postValue(String.valueOf(dBFS));
+                LiveData.get().getData().postValue((int) dBFS);
             }
         }).start();
 

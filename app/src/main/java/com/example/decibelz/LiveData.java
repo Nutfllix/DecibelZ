@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData;
 public class LiveData {
 
     private static final LiveData instance = new LiveData();
-    private final MutableLiveData<String> data = new MutableLiveData<>();
+    private final MutableLiveData<Integer> data = new MutableLiveData<>();
 
     public static LiveData get() {
         return instance;
     }
 
-    public MutableLiveData<String> getData() {
+    public MutableLiveData<Integer> getData() {
         return data;
     }
 
