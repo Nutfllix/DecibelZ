@@ -53,7 +53,7 @@ public class Settings_page extends AppCompatActivity {
 
         TextView d = findViewById(R.id.testView2);
         LiveData.get().getData().observe(this, dBFS -> {
-            d.setText(String.valueOf(dBFS));
+            d.setText(String.valueOf(dBFS + offset + 57));
         });
     }
 }

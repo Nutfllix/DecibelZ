@@ -2,6 +2,7 @@ package com.example.decibelz;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,8 +17,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+
 public class MainActivity extends AppCompatActivity {
-/////////////////handles permisions
+
+    SharedPreferences offsetStorage;
+    public int getOffset() {
+        return offsetStorage.getInt("offset", 100);
+    }
+
+
+    /////////////////handles permisions
     public boolean AllowRecording = false;
 
     private void requestAccessToRecording() {
@@ -83,8 +92,12 @@ public class MainActivity extends AppCompatActivity {
         //gets data from livedata and posts it to textview
         TextView a = findViewById(R.id.testView);
 
+        offsetStorage = getSharedPreferences("offsetStorage", MODE_PRIVATE);
+
+        int offset = getOffset();
+
         LiveData.get().getData().observe(this, dBFS -> {
-            a.setText(String.valueOf(dBFS));
+            a.setText(String.valueOf(dBFS + offset + 57));
         });
 
         ///////
