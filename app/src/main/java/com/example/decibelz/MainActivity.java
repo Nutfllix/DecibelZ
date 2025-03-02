@@ -82,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
         }
         ////////////////////////////////
 
+        TextView a = findViewById(R.id.testView);
 
+        LiveData.get().getData().observe(this, newValue -> {
+            a.setText(newValue);
+        });
     }
 }

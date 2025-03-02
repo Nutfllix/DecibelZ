@@ -63,13 +63,7 @@ public class BackgroundRecording extends Service {
                 double dBSPL = dBFS + offset;
 
                 System.out.println(dBSPL);
-                Handler mainHandler = new Handler(Looper.getMainLooper());
-                mainHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-
-                    }
-                });
+                LiveData.get().getData().postValue(String.valueOf(dBSPL));
             }
         }).start();
 
