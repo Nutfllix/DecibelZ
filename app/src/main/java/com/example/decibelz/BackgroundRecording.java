@@ -9,8 +9,11 @@ import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.os.Build;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.util.Log;
+import android.widget.TextView;
 
 import androidx.core.app.NotificationCompat;
 
@@ -22,6 +25,7 @@ public class BackgroundRecording extends Service {
     public double dBFS;
     public double offset;
     //
+
 
 
     @Override
@@ -38,7 +42,7 @@ public class BackgroundRecording extends Service {
         // Start the service in the foreground
         startForeground(notificationId, notification);
 
-        new Thread(()->{
+        new Thread(() -> {
             int BufferSize = AudioRecord.getMinBufferSize(44100, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
             AudioRecord audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, 44100, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT, BufferSize);
             short[] bufferStorage = new short[BufferSize];
@@ -59,8 +63,15 @@ public class BackgroundRecording extends Service {
                 double dBSPL = dBFS + offset;
 
                 System.out.println(dBSPL);
+                Handler mainHandler = new Handler(Looper.getMainLooper());
+                mainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                });
             }
-        });
+        }).start();
 
         return START_STICKY;
     }

@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     }
 ////////////////////////////////
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this,"This app wont work if you dont allow to record", Toast.LENGTH_SHORT).show();
             }
         });
-
 
         //zatrzymuje
        stopButton.setOnClickListener(view -> {
