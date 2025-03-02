@@ -51,10 +51,11 @@ public class MainActivity extends AppCompatActivity {
         //////////////////////////////
         Button startButton = findViewById(R.id.startButton);
         Button stopButton = findViewById(R.id.stopButton);
+        Intent serviceIntent = new Intent(this, BackgroundRecording.class);
         // Zaczyna foregroundserice
         startButton.setOnClickListener(view -> {
             if (AllowRecording == true) {
-                Intent serviceIntent = new Intent(this, BackgroundRecording.class);
+
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     startForegroundService(serviceIntent);
                 } else {
@@ -67,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
 
         //zatrzymuje
        stopButton.setOnClickListener(view -> {
-            Intent serviceIntent = new Intent(this, BackgroundRecording.class);
             stopService(serviceIntent);
         });
         ///////////////////////////////
