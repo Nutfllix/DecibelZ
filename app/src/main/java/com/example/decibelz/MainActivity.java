@@ -83,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
         //gets data from livedata and posts it to textview
         TextView a = findViewById(R.id.testView);
 
-        LiveData.get().getData().observe(this, newValue -> {
-            a.setText(newValue);
+        LiveData.get().getData().observe(this, dBFS -> {
+            a.setText(dBFS);
         });
 
         ///////

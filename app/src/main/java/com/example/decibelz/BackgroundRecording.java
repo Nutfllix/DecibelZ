@@ -23,7 +23,6 @@ public class BackgroundRecording extends Service {
 
     //variables for audio
     public static double dBFS;
-    public double offset = 110;
     //
 
 
@@ -60,10 +59,10 @@ public class BackgroundRecording extends Service {
                 double rms = Math.sqrt(sum / bufferStorage.length);
 
                 dBFS = 20 * Math.log10(rms);
-                double dBSPL = dBFS + offset;
 
-                System.out.println(dBSPL);
-                LiveData.get().getData().postValue(String.valueOf(dBSPL));
+
+                System.out.println(dBFS);
+                LiveData.get().getData().postValue(String.valueOf(dBFS));
             }
         }).start();
 
