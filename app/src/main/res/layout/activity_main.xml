@@ -8,41 +8,36 @@
     tools:context=".MainActivity">
 
 
-    <Button
-        android:id="@+id/startButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="145dp"
-        android:layout_marginTop="172dp"
-        android:layout_marginEnd="146dp"
-        android:text="startButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/stopButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="146dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="147dp"
-        android:text="stopButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startButton" />
+
+    <View
+        android:layout_width="74dp"
+        android:layout_height="72dp"
+        android:background="@drawable/circle"
+        android:backgroundTint="#798CFF"
+        tools:layout_editor_absoluteX="168dp"
+        tools:layout_editor_absoluteY="453dp" />
+
+    <ImageButton
+        android:id="@+id/startButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/play"
+        tools:layout_editor_absoluteX="193dp"
+        tools:layout_editor_absoluteY="474dp" />
 
     <TextView
         android:id="@+id/testView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
-        android:layout_marginTop="12dp"
         android:layout_marginEnd="177dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stopButton" />
+        tools:layout_editor_absoluteY="322dp" />
 
     <ImageButton
         android:id="@+id/settingsMove"

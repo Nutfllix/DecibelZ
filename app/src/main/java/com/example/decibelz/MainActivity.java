@@ -73,8 +73,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //////////////////////////////
-        Button startButton = findViewById(R.id.startButton);
-        Button stopButton = findViewById(R.id.stopButton);
+        ImageButton startButton = findViewById(R.id.startButton);
         Intent serviceIntent = new Intent(this, BackgroundRecording.class);
         // Zaczyna foregroundserice
         RecordBoolStorage = getSharedPreferences("RecordBoolStorage", MODE_PRIVATE);
