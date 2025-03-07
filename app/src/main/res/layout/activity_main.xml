@@ -5,18 +5,17 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#282828"
     tools:context=".MainActivity">
-
-
 
 
     <View
         android:layout_width="74dp"
         android:layout_height="72dp"
         android:background="@drawable/circle"
-        android:backgroundTint="#798CFF"
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="453dp" />
+        android:backgroundTint="#3e3e42"
+        tools:layout_editor_absoluteX="164dp"
+        tools:layout_editor_absoluteY="476dp" />
 
     <ImageButton
         android:id="@+id/startButton"
@@ -25,19 +24,8 @@
         android:background="@null"
         android:scaleType="fitCenter"
         android:src="@drawable/play"
-        tools:layout_editor_absoluteX="193dp"
-        tools:layout_editor_absoluteY="474dp" />
-
-    <TextView
-        android:id="@+id/testView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginEnd="177dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="322dp" />
+        tools:layout_editor_absoluteX="189dp"
+        tools:layout_editor_absoluteY="497dp" />
 
     <ImageButton
         android:id="@+id/settingsMove"
@@ -47,7 +35,31 @@
         android:background="@null"
         android:scaleType="fitCenter"
         android:layout_marginTop="16dp"
+        android:tint="#141414"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        app:indicatorSize="260dp"
+        app:trackThickness="25dp"
+        app:indicatorColor="#ffc100"
+        android:progress="6"
+        app:indicatorTrackGapSize="2dp"
+        app:trackColor="#141414"
+        tools:layout_editor_absoluteX="71dp"
+        tools:layout_editor_absoluteY="145dp" />
+
+    <TextView
+        android:id="@+id/testView"
+        android:layout_width="66dp"
+        android:layout_height="38dp"
+        android:gravity="center"
+        android:text="00"
+        android:textSize="22dp"
+        tools:layout_editor_absoluteX="172dp"
+        tools:layout_editor_absoluteY="260dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
