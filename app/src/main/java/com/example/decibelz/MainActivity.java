@@ -85,8 +85,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         startButton.setOnClickListener(view -> {
-            if (records==true) {
-                records = false;
+            if (records==false) {
+                records = true;
+                startButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.pause));
                 System.out.println("StartsService");
                 if (AllowRecording == true) {
 
@@ -98,8 +99,9 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(this,"This app wont work if you dont allow to record", Toast.LENGTH_SHORT).show();
                 }
-            } else if (!records){
-                records = true;
+            } else if (records){
+                records = false;
+                startButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.play));
                 System.out.println("stopping service");
                 stopService(serviceIntent);
 
