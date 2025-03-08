@@ -55,6 +55,8 @@ public class BackgroundRecording extends Service {
             audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, 44100, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT, BufferSize);
             short[] bufferStorage = new short[BufferSize];
             audioRecord.startRecording();
+            double highest = -100;
+            double lowest = 0;
 
             while (threadVar) {
 
@@ -69,9 +71,16 @@ public class BackgroundRecording extends Service {
 
                 dBFS = 20 * Math.log10(rms);
 
+                if (dBFS>highest){
+                    highest = dBFS;
+                } else if (dBFS<lowest) {
+                    lowest = dBFS;
+                }
+
 
                 //System.out.println(dBFS);
                 LiveData.get().getData().postValue((int) dBFS);
+                System.out.println(lowest+" and "+ highest);
             }
         }).start();
 
