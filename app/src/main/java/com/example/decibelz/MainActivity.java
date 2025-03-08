@@ -84,7 +84,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+        if (records==false){
+            startButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.play2));
+        } else {
+            startButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.pause));
+        }
         startButton.setOnClickListener(view -> {
             if (records==false) {
                 records = true;
