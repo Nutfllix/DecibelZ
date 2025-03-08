@@ -17,6 +17,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.progressindicator.CircularProgressIndicator;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -121,13 +123,14 @@ public class MainActivity extends AppCompatActivity {
         ////////////////////////////////
         //gets data from livedata and posts it to textview
         TextView a = findViewById(R.id.testView);
-
+        CircularProgressIndicator progressIndicator = findViewById(R.id.circularProgressIndicator);
         offsetStorage = getSharedPreferences("offsetStorage", MODE_PRIVATE);
 
         int offset = getOffset();
 
         LiveData.get().getData().observe(this, dBFS -> {
             a.setText(String.valueOf(dBFS + offset + 57));
+            progressIndicator.setProgress(dBFS + offset + 57);
         });
 
         ///////
