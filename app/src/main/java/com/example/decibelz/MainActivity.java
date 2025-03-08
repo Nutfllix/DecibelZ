@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -101,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             } else if (records){
                 records = false;
-                startButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.play));
+                startButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.play2));
                 System.out.println("stopping service");
                 stopService(serviceIntent);
 

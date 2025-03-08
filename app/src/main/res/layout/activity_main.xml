@@ -10,22 +10,30 @@
 
 
     <View
+        android:id="@+id/view"
         android:layout_width="74dp"
         android:layout_height="72dp"
+        android:layout_marginStart="169dp"
+        android:layout_marginEnd="169dp"
         android:background="@drawable/circle"
         android:backgroundTint="#3e3e42"
-        tools:layout_editor_absoluteX="164dp"
-        tools:layout_editor_absoluteY="476dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circularProgressIndicator" />
 
     <ImageButton
         android:id="@+id/startButton"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:layout_marginStart="2dp"
         android:background="@null"
         android:scaleType="fitCenter"
-        android:src="@drawable/play"
-        tools:layout_editor_absoluteX="189dp"
-        tools:layout_editor_absoluteY="497dp" />
+        android:src="@drawable/play2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circularProgressIndicator" />
 
     <ImageButton
         android:id="@+id/settingsMove"
@@ -41,16 +49,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/circularProgressIndicator"
         android:layout_width="260dp"
         android:layout_height="260dp"
-        app:indicatorSize="260dp"
-        app:trackThickness="25dp"
-        app:indicatorColor="#ffc100"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="145dp"
+        android:layout_marginEnd="71dp"
         android:progress="6"
+        app:indicatorColor="#ffc100"
+        app:indicatorSize="260dp"
         app:indicatorTrackGapSize="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:trackColor="#141414"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="145dp" />
+        app:trackThickness="25dp" />
 
     <TextView
         android:id="@+id/testView"
