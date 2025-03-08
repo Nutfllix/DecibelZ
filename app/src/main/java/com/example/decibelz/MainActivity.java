@@ -131,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
         offsetStorage = getSharedPreferences("offsetStorage", MODE_PRIVATE);
 
         int offset = getOffset();
-
         LiveData.get().getData().observe(this, dBFS -> {
             a.setText(String.valueOf(dBFS + offset + 57));
             progressIndicator.setProgress(dBFS + offset + 57);

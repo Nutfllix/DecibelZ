@@ -46,9 +46,23 @@ public class Settings_page extends AppCompatActivity {
         offset = getOffset();
         seekBar.setProgress(offset);
 
-        kalibruj.setOnClickListener(v->{
-            offset = seekBar.getProgress();
-            updateOffset();
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                offset = seekBar.getProgress();
+                System.out.println("changed");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                updateOffset();
+                System.out.println("stoped");
+            }
         });
 
         TextView d = findViewById(R.id.testView2);
