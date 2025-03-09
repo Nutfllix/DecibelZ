@@ -40,7 +40,6 @@ public class Settings_page extends AppCompatActivity {
         });
 
         SeekBar seekBar = findViewById(R.id.seekBar2);
-        Button kalibruj = findViewById(R.id.calibrate);
 
         offsetStorage = getSharedPreferences("offsetStorage", MODE_PRIVATE);
         offset = getOffset();

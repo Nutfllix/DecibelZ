@@ -9,32 +9,6 @@
     tools:context=".MainActivity">
 
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="74dp"
-        android:layout_height="72dp"
-        android:layout_marginStart="169dp"
-        android:layout_marginEnd="169dp"
-        android:background="@drawable/circle"
-        android:backgroundTint="#3e3e42"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circularProgressIndicator" />
-
-    <ImageButton
-        android:id="@+id/startButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="2dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:src="@drawable/play2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circularProgressIndicator" />
-
     <ImageButton
         android:id="@+id/settingsMove"
         android:layout_width="38dp"
@@ -43,7 +17,7 @@
         android:background="@null"
         android:scaleType="fitCenter"
         android:layout_marginTop="16dp"
-        android:tint="#141414"
+        app:tint="#141414"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -53,7 +27,7 @@
         android:layout_width="260dp"
         android:layout_height="260dp"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="145dp"
+        android:layout_marginTop="108dp"
         android:layout_marginEnd="71dp"
         android:progress="6"
         app:indicatorColor="#ffc100"
@@ -65,62 +39,104 @@
         app:trackColor="#141414"
         app:trackThickness="25dp" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="356dp"
+        android:layout_height="94dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/shapy"
+        android:backgroundTint="#141414"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circularProgressIndicator">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="74dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="141dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="141dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="#3e3e42"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="h,1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageButton
+            android:id="@+id/startButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/play2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Lowest"
+            app:layout_constraintEnd_toStartOf="@+id/view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Highest"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/highest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="46dp"
+            android:layout_marginEnd="79dp"
+            android:text="00"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <TextView
+            android:id="@+id/lowest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="47dp"
+            android:layout_marginEnd="78dp"
+            android:text="00"
+            app:layout_constraintEnd_toStartOf="@+id/view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/testView"
         android:layout_width="66dp"
         android:layout_height="38dp"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="220dp"
         android:gravity="center"
         android:text="00"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:textSize="22dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="172dp" />
-
-
-    <TextView
-        android:id="@+id/highest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="124dp"
-        android:layout_marginEnd="70dp"
-        android:text="00"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/circularProgressIndicator" />
-
-    <TextView
-        android:id="@+id/lowest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="124dp"
-        android:layout_marginEnd="39dp"
-        android:text="00"
-        app:layout_constraintEnd_toStartOf="@+id/view"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circularProgressIndicator" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginBottom="1dp"
-        android:text="Lowest"
-        app:layout_constraintBottom_toTopOf="@+id/lowest"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="80dp"
-        android:text="Highest"
-        app:layout_constraintBottom_toTopOf="@+id/highest"
-        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
