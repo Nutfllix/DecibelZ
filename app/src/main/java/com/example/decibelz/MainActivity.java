@@ -16,8 +16,11 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.MutableLiveData;
 
 import com.google.android.material.progressindicator.CircularProgressIndicator;
+
+import org.w3c.dom.Text;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -135,6 +138,23 @@ public class MainActivity extends AppCompatActivity {
             a.setText(String.valueOf(dBFS + offset + 57));
             progressIndicator.setProgress(dBFS + offset + 57);
         });
+
+        MutableLiveData<Integer> refHigh = LiveData.get().getHighest();
+        MutableLiveData<Integer> refLowst = LiveData.get().getLowest();
+        TextView lowest = findViewById(R.id.lowest);
+        TextView highest = findViewById(R.id.highest);
+
+
+        refHigh.observe(this, val -> {
+            System.out.println("new highest");
+            highest.setText(String.valueOf(val + offset + 57));
+        });
+
+        refLowst.observe(this, val -> {
+            System.out.println("new lowest");
+            lowest.setText(String.valueOf(val + offset + 57));
+        });
+
 
         ///////
         //moving to other pages

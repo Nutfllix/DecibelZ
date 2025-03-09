@@ -73,14 +73,17 @@ public class BackgroundRecording extends Service {
 
                 if (dBFS>highest){
                     highest = dBFS;
-                } else if (dBFS<lowest) {
+                    LiveData.get().getHighest().postValue((int) highest);
+                } else if (dBFS<lowest && dBFS>-2000) {
                     lowest = dBFS;
+                    LiveData.get().getLowest().postValue((int) lowest);
                 }
 
 
                 //System.out.println(dBFS);
                 LiveData.get().getData().postValue((int) dBFS);
-                System.out.println(lowest+" and "+ highest);
+
+
             }
         }).start();
 
