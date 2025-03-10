@@ -40,6 +40,7 @@
         app:trackThickness="25dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="356dp"
         android:layout_height="94dp"
         android:layout_marginTop="24dp"
@@ -137,6 +138,16 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/getreport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:backgroundTint="#3e3e42"
+        android:text="Get report"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        tools:layout_editor_absoluteX="150dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

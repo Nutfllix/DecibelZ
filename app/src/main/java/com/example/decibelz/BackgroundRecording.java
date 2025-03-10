@@ -57,6 +57,8 @@ public class BackgroundRecording extends Service {
             audioRecord.startRecording();
             double highest = -100;
             double lowest = 0;
+            double ilosc = 0.0;
+            double dzwiek = 0.0;
 
             while (threadVar) {
 
@@ -84,6 +86,11 @@ public class BackgroundRecording extends Service {
                 LiveData.get().getData().postValue((int) dBFS);
 
 
+                if(dBFS>-2000 && dBFS!=0){
+                    ilosc++;
+                    dzwiek+=dBFS;
+                }
+                LiveData.get().getAverage().postValue((int) (dzwiek/ilosc));
             }
         }).start();
 

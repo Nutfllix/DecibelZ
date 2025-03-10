@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +18,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.MutableLiveData;
-
+import android.app.AlertDialog;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 import org.w3c.dom.Text;
@@ -162,6 +163,24 @@ public class MainActivity extends AppCompatActivity {
         b.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, Settings_page.class);
             startActivity(intent);
+        });
+
+        MutableLiveData<Integer> refAverage = LiveData.get().getAverage();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Report");
+        builder.setPositiveButton("Ok", null);
+
+        Button getreport = findViewById(R.id.getreport);
+        getreport.setOnClickListener(v -> {
+            if (records) {
+                builder.setMessage("highest " + String.valueOf(57+ offset + refHigh.getValue())
+                + "\nLowest " + String.valueOf(57+ offset + refLowst.getValue()) +
+                "\nAverage " + String.valueOf(57+ offset + refAverage.getValue())
+                );
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+            }
         });
     }
 }

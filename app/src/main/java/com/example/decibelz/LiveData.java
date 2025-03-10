@@ -8,6 +8,7 @@ public class LiveData {
     private final MutableLiveData<Integer> data = new MutableLiveData<>();
     private final MutableLiveData<Integer> highest = new MutableLiveData<>();
     private final MutableLiveData<Integer> lowest = new MutableLiveData<>();
+    private final MutableLiveData<Integer> average = new MutableLiveData<>();
 
     public static LiveData get() {
         return instance;
@@ -25,4 +26,5 @@ public class LiveData {
         return lowest;
     }
 
+    public MutableLiveData<Integer> getAverage() {return average;}
 }
